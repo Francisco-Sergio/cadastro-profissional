@@ -11,7 +11,7 @@ let idAtual = dados.length ? dados[dados.length - 1].id + 1 : 1;
 function salvarDados(nome, telefone, email) {
     const novoRegistro = {id: idAtual++, nome, telefone, email};
     dados.push(novoRegistro);
-    localStoragesetItem('cadastro', JSON.stringify(dados));
+    localStorage.setItem('cadastro', JSON.stringify(dados));
 }
 
 function verificarDuplicado(nome) {
@@ -22,6 +22,7 @@ function atualizarTabela() {
     tabela.innerHTML = "";
     dados.forEach(dado => {
         const row = tabela.insertRow();
+        row.insertCell().textContent = dado.id;
         row.insertCell().textContent = dado.nome;
         row.insertCell().textContent = dado.telefone;
         row.insertCell().textContent = dado.email;
@@ -43,7 +44,7 @@ form.addEventListener("submit", (e) => {
         alert('Esse nome já foi cadastrado!');
         return;
     }
-
+    tabela.style.overflow = "auto";
     salvarDados(nome, telefone, email);
     nomeInput.value = "";
     telefoneInput.value = "";
