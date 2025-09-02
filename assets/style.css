@@ -114,6 +114,10 @@ th {
     background-color: #e9ecef;
 }
 
+.excluir {
+    margin-left: 10px;
+}
+
 h2 {
     order: 1;
     float: left;
